@@ -5,5 +5,12 @@ import './index.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastProvider } from './components/ToastContext.jsx';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <React.StrictMode>
+        <ToastProvider>
+            <App />
+        </ToastProvider>
+    </React.StrictMode>,
+)

@@ -17,7 +17,9 @@ const userServices = {
         return await instance.post('/users/login', {
             username: email,
             password
-        }, { withCredentials: true });
+        }
+        // ,{ withCredentials: true } //getting error while execution (Cors) hence commented
+    );
     },
     // get the currently logged in user
     getCurrentUser: async () => {

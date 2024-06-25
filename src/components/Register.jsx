@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import userServices from '../services/userServices';
-import { showToast , ToastManager } from './ToastManager';
-import { toast } from "react-toastify";
+import { useToast } from "./ToastContext";
 
 const Register = () => {
 
@@ -13,6 +12,8 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  const toast = useToast()
+  
   const handleRegister = (e) => {
     e.preventDefault();
 
