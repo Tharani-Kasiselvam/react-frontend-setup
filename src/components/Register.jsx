@@ -13,7 +13,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const toast = useToast()
-  
+
   const handleRegister = (e) => {
     e.preventDefault();
 
@@ -23,7 +23,7 @@ const Register = () => {
     userServices.register(name, email, password, location)
       .then(response => {
         // alert(response.data.message);
-        toast.addToast('Registration success','success')
+        toast.addToast('Registration Success')
 
         // clear the form
         setName("");
@@ -38,7 +38,8 @@ const Register = () => {
       })
       .catch(error => {
         // alert(error.response.data.message);
-        toast.addToast('Registration Failed','danger')
+        console.log("ERRRRRRRRRR:::",error.response.data.message)
+        toast.addToast(`Registration Failed: ${error.response.data.message}`)
       });
   }
 

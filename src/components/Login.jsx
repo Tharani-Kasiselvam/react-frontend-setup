@@ -34,7 +34,7 @@ const Login = () => {
       })
       .catch(error => {
         // alert(error.response.data.message);
-        toast.addToast(`Login Failed: ${error.response.data.message}`,'danger')
+        toast.addToast(`Login Failed: ${error.response.data.message}`)
       });
 
   }
