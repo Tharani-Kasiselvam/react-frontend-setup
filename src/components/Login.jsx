@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import userServices from "../services/userServices";
+import { useToast } from "./ToastContext";
 
 const Login = () => {
 
@@ -8,6 +9,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const toast = useToast()
+
 
   const handleLogin = (e) => {
 
@@ -16,7 +19,8 @@ const Login = () => {
     // perform user login
     userServices.login(email, password)
       .then(response => {
-        alert(response.data.message);
+        // alert(response.data.message);
+        toast.addToast('Login Success','success')
 
         // clear the form
         setEmail("");
@@ -29,7 +33,8 @@ const Login = () => {
 
       })
       .catch(error => {
-        alert(error.response.data.message);
+        // alert(error.response.data.message);
+        toast.addToast(`Login Failed: ${error.response.data.message}`,'danger')
       });
 
   }

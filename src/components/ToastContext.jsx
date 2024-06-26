@@ -6,7 +6,8 @@ const ToastContext = createContext()
 export const ToastProvider = ({ children }) => {
     const [toasts, setToasts] = useState([])
 
-    const addToast = (message, variant = 'info') => {
+    const addToast = (message, variant = 'success') => {
+        console.log("Inside addToast: ",message)
         setToasts([...toasts, { message, variant, id: new Date() }])
     }
 
@@ -17,7 +18,7 @@ export const ToastProvider = ({ children }) => {
     return (
         <ToastContext.Provider value={{ addToast, removeToast }}>
             {children}
-            <ToastContainer position="bottom-end" className="p-3">
+            <ToastContainer position="top-center" className="p-3 text-align-center">
                 {
                     toasts.map(({ id, message, variant }) => (
                         <Toast key={id}
@@ -25,6 +26,7 @@ export const ToastProvider = ({ children }) => {
                             delay={3000}
                             autohide 
                             by={variant}
+                            className = 'bg-primary text-white border-radius-3p font-weight-bold'
                         >
                         <Toast.Body>{message}</Toast.Body>
                         </Toast>
